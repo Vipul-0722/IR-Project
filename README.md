@@ -197,6 +197,41 @@ The application uses the following environment variables:
 
 ---
 
+## ⚙️ Setup Instructions
+
+Follow these steps to run the project locally:
+
+---
+
+### 1. 📦 Clone the Repository
+
+```bash
+git clone git@github.com:Vipul-0722/IR-Project.git
+cd frontend
+```
+
+```bash
+npm install
+npm start
+```
+
+
+2. 🚀 Backend Setup
+   
+```bash
+cd backend/api-server
+npm install
+docker run -d --name redis-server -p 6379:6379 redis
+node index.js
+```
+Create a .env file  and add the following:
+
+```bash  
+MONGO_URI=<your-mongodb-uri>
+ELASTIC_URI=<your-elasticsearch-host>
+REDIS_URL=redis://localhost:6379
+```
+---
 ## 📸 Screenshots
 
 ### 🏠 Home Page
