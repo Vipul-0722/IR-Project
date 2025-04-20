@@ -18,6 +18,54 @@ A full-stack application that provides an interactive API and web interface to e
 ![](./Assets/architecture.png)
 
 
+## 🔄 Data Flow and Components
+
+
+### 📂 Data Sources
+
+- **Initial Data Source**: JSON/CSV files containing detailed airport information.
+
+
+### 🖥️ Frontend UI
+
+- Airport Explorer.
+- Analytics
+
+
+### 🧠 Backend
+
+- Core API endpoints for retrieving, filtering, sorting and adding airport data
+- Data processing module for enrichment (like deriving region from country/state)
+-  operations for managing airport data
+- **Circuit breaker pattern** to handle failover between Elasticsearch and MongoDB
+
+
+### 🗃️ Data Storage Layer
+
+- **MongoDB**: Primary data store for airport information.
+- **Elasticsearch**: High-performance search engine for efficient text-based filtering.
+- **Redis**: Used as a cache for storing:
+  - Analytics
+  - Statistics
+  - Frequently accessed data
+
+
+### ⏱️ Background Processes
+
+- A **cron job** runs nightly to:
+  - Synchronize data between **MongoDB** and **Elasticsearch**
+  - Maintain consistency across the data storage layers
+
+
+
+### 🏗️ Key Architectural Patterns
+
+- **🧯 Circuit Breaker Pattern**: Enables graceful fallback to MongoDB when Elasticsearch is unavailable.
+- **⚡ Caching Strategy**: Uses Redis to serve analytics and frequently used statistics with low latency.
+- **📅 Scheduled Synchronization**: Ensures data consistency by syncing MongoDB and Elasticsearch every night.
+- **📈 Data Flow**: Captures the complete lifecycle — from initial load (via JSON/CSV) to API-level interactions and caching.
+
+
 ---
 
 ## 🧱 Tech Stack
