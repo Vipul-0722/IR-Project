@@ -77,9 +77,10 @@ A full-stack application that provides an interactive API and web interface to e
 | **Database**   | MongoDB              |
 | **Search Engine** | Elasticsearch     |
 | **Caching**    | Redis                |
+| **Unit Test**  | Jest                |
 | **Cron Jobs**  | node-cron            |
 | **Deployment** | SAP BTP (Kayma)   |
-
+  
 
 ---
 
