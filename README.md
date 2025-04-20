@@ -87,7 +87,7 @@ A full-stack application that provides an interactive API and web interface to e
 | Layer          | Technology           |
 |----------------|----------------------|
 | **Frontend**   | React (or other)     |
-| **Backend**    | Node.js + Express and CAP   |
+| **Backend**    | Node.js / CAP   |
 | **Database**   | MongoDB              |
 | **Search Engine** | Elasticsearch     |
 | **Caching**    | Redis                |
