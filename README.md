@@ -69,3 +69,26 @@ A full-stack application that provides an interactive API and web interface to e
 - Sortable and filterable by columns
 - Highlights rows where elevation > 8000 ft
 
+## 🔍 Data Analytics & Scripting Tasks
+
+This application includes various analytical endpoints and background tasks that provide valuable insights on airport data.
+
+### 🚀 Performance Features
+- 🗂️ **Redis Caching**: Frequently accessed analytics results are cached in Redis to boost performance and reduce latency.
+- 🕐 **Nightly Cron Job**: A scheduled task syncs data from **MongoDB** to **Elasticsearch** every night to ensure search results stay up to date.
+
+### 📈 Scripting Tasks
+
+1. **Calculate Average Elevation per Country**
+   - Computes the average airport elevation grouped by country.
+   - Helpful for geographic analysis and environmental studies.
+
+2. **Find Airports Without IATA Codes**
+   - Detects airports missing an IATA code.
+   - Useful for data quality assurance and cleanup.
+
+3. **Determine the 10 Most Common Time Zones**
+   - Lists the most frequently occurring airport time zones.
+   - Helps understand global distribution and timezone density.
+
+Each of these is exposed via clean REST APIs and efficiently cached with Redis for production-grade speed.
