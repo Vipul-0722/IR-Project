@@ -1,0 +1,170 @@
+# Namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: airport-app
+---
+# Redis Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-deployment
+  namespace: airport-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: airport-redis
+  template:
+    metadata:
+      labels:
+        app: airport-redis
+    spec:
+      containers:
+        - name: airport-redis-container
+          image: redis
+          ports:
+            - containerPort: 6379
+---
+# Redis Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: airport-redis-service
+  namespace: airport-app
+spec:
+  selector:
+    app: airport-redis
+  ports:
+    - protocol: TCP
+      port: 6379
+      targetPort: 6379
+  type: NodePort
+---
+# Backend Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: airports-api-deployment
+  namespace: airport-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: airports-api
+  template:
+    metadata:
+      labels:
+        app: airports-api
+    spec:
+      containers:
+        - name: airports-api-container
+          image: vipul710/airport-backend:dev
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MONGO_URI
+              value: "mongodb+srv://vipul:vipul123@cluster0.0zocwck.mongodb.net/airportDB"
+            - name: REDIS_HOST
+              value: "airport-redis-service"
+            - name: REDIS_PORT
+              value: "6379"
+---
+# Backend Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: airports-api-service
+  namespace: airport-app
+spec:
+  selector:
+    app: airports-api
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: NodePort
+---
+# Frontend Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: airports-ui-deployment
+  namespace: airport-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: airports-ui
+  template:
+    metadata:
+      labels:
+        app: airports-ui
+    spec:
+      containers:
+        - name: airports-ui-container
+          image: vipul710/airports-ui:dev
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+---
+# Frontend Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: airports-ui-service
+  namespace: airport-app
+spec:
+  selector:
+    app: airports-ui
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer
+---
+# Ingress Class (Istio)
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: istio
+spec:
+  controller: istio.io/ingress-controller
+---
+
+# Ingress
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: airport-ingress
+  namespace: airport-app
+spec:
+  ingressClassName: istio
+  rules:
+    - host: ui.api.d6d7c75.kyma.ondemand.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: airports-ui-service
+                port:
+                  number: 80
+    - host: api.api.d6d7c75.kyma.ondemand.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: airports-api-service
+                port:
+                  number: 8080
+  tls:
+    - hosts:
+      - ui.api.d6d7c75.kyma.ondemand.com
+      - api.api.d6d7c75.kyma.ondemand.com
+      secretName: kyma-gateway-certs
+
