@@ -93,6 +93,8 @@ A full-stack application that provides an interactive API and web interface to e
 | **Caching**    | Redis                |
 | **Unit Test**  | Jest                |
 | **Cron Jobs**  | node-cron            |
+| **Containerization**  | Docker        |
+|**Orchestration**  | Kubernetes (SAP BTP Kyma)   |
 | **Deployment** | SAP BTP (Kayma)   |
   
 
@@ -115,32 +117,41 @@ A full-stack application that provides an interactive API and web interface to e
 ---
 ## ⚙️ Features
 
-### Backend (Node.js + Express + MongoDB + Elasticsearch)
+### Backend 
 🚀 Features
-- Load & display 29K+ airports from JSON/CSV into MongoDB
 
-- Fast search & filtering using Elasticsearch
+- **⚡ High-Performance Search & Filtering**  
+  Use Elasticsearch to search and filter by airport name, city, country, state, and more.
 
-- Fallback to MongoDB using Circuit Breaker when ES is down
+- **💡 Auto-Suggestions**  
+  Real-time typeahead search suggestions powered by Elasticsearch Completion Suggester.
 
-- Nightly sync job from MongoDB to Elasticsearch via Cron
+- **🛑 Fallback with Circuit Breaker**  
+  If Elasticsearch is unavailable, the system gracefully falls back to MongoDB for queries using a circuit breaker pattern.
 
-- Derived fields like region (Country-State)
+- **🕰️ Nightly Sync**  
+  A scheduled Cron job syncs MongoDB data to Elasticsearch every night to keep indices fresh.
 
-- Sorting & filtering by name, city, country, etc.
+- **🌍 Derived Fields**  
+  Dynamic region fields (e.g., `US-Wisconsin`) generated from country and state data.
 
-- Add airport at runtime via API
+- **📊 Smart UI Table**  
+  - Loads data from backend and displays in a structured table
+  - Rows with elevation over **8000 feet** are highlighted for visibility
 
-- Highlight rows in UI where elevation > 8000ft
+- **📈 Runtime Airport Entry**  
+  Add new airport details through an API and reflect updates in real-time UI.
 
-- Caching stats/analytics in Redis
+- **📊 Interactive Graphs & Analytics in UI**  
+  View real-time visualizations using chart components:
+  - 📐 Average Elevation per Country
+  - ✈️ Airports Missing IATA Codes
+  - 🌍 Top 10 Most Common Timezones  
+  *(Backed by Redis caching for fast performance)*
 
-- Deployment on SAP BTP
+- **☁️ Cloud Native Deployment**  
+  Deployed on **SAP BTP Kyma Cluster** using containerized microservices (Docker + Kubernetes)
 
-### Frontend (React.js)
-- Displays all airports in a table view
-- Sortable and filterable by columns
-- Highlights rows where elevation > 8000 ft
 
 ## 🔍 Data Analytics & Scripting Tasks
 
@@ -218,7 +229,7 @@ Follow these steps to run the project locally:
 
 ---
 
-### 1. 📦 Clone the Repository
+1.  Clone the Repository
 
 ```bash
 git clone git@github.com:Vipul-0722/IR-Project.git
@@ -231,7 +242,7 @@ npm start
 ```
 
 
-2. 🚀 Backend Setup
+2.  Backend Setup
    
 ```bash
 cd backend/api-server
@@ -254,20 +265,20 @@ REDIS_URL=redis://localhost:6379
 ---
 ## 📸 Screenshots
 
-### 🏠 Home Page
+###  Home Page
 ![Home Page](./Assets/1.png)
 
-### 🔍 Autocomplete Search 
+###  Autocomplete Search 
 ![Search](./Assets/2.png)
 
-### 🔍 Sort By filter 
+###  Sort By filter 
 ![Search](./Assets/3.png)
 
-### 🔍 Analytics - Average Elevation per Country
+###  Analytics - Average Elevation per Country
 ![Search](./Assets/4.png)
 
-### 🔍 Analytics - Airports Without IATA Codes
+###  Analytics - Airports Without IATA Codes
 ![Search](./Assets/5.png)
 
-### 🔍 Analytics - 10 Most Common Time Zones
+###  Analytics - 10 Most Common Time Zones
 ![Search](./Assets/6.png)
