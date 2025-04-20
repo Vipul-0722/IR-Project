@@ -2,6 +2,7 @@
 
 A full-stack application that provides an interactive API and web interface to explore global airport data. The service is powered by Node.js / CAP, backed by MongoDB and Elasticsearch, and deployed on the SAP BTP Kyma Kubernetes cluster.
 
+
 ## 🌍 Live Demo
 
 - **Frontend App URL:** [ui.api.d6d7c75.kyma.ondemand.com](https://ui.api.d6d7c75.kyma.ondemand.com)  
@@ -12,6 +13,19 @@ A full-stack application that provides an interactive API and web interface to e
 ## 🎥 Video Demo
 
 [Video demo Link](https://drive.google.com/file/d/1DfOmEUQ_0XXcWRVoM7tWn2bySvfA8Tf6/view?usp=sharing)
+
+---
+# 📘 Table of Contents
+
+- 📐 Architecture 
+- 🛠️ Tech Stack
+- 🔩 Components
+- ✨ Features
+- 🚀 Deployment Diagram
+- ⚙️ Setup Instructions
+- 🖼️ Screenshots
+
+
 
 ---
 ##  Architecture Diagarm
@@ -223,6 +237,11 @@ npm start
 cd backend/api-server
 npm install
 docker run -d --name redis-server -p 6379:6379 redis
+```
+
+Run Unit tests
+```bash
+npm test
 node index.js
 ```
 Create a .env file  and add the following:
