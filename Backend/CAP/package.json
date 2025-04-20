@@ -1,0 +1,27 @@
+{
+  "name": "airport-app",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^8.9.2",
+    "@sap/cds-fiori": "^1.4.1",
+    "@sap/cds-runtime": "^3.3.0",
+    "@sap/ux-specification": "^1.124.14",
+    "csv-parser": "^3.2.0",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.9.0",
+    "@cap-js/sqlite": "^1"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-project1": "cds watch --open project1/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "sapux": [
+    "app/project1"
+  ]
+}
