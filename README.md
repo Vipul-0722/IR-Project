@@ -1,16 +1,21 @@
 # ✈️ Airlytics
 
-A full-stack application that provides an interactive API and web interface to explore global airport data. The service is powered by Node.js or CAP, backed by MongoDB and Elasticsearch, and deployed on the SAP BTP Kyma Kubernetes cluster.
+A full-stack application that provides an interactive API and web interface to explore global airport data. The service is powered by Node.js / CAP, backed by MongoDB and Elasticsearch, and deployed on the SAP BTP Kyma Kubernetes cluster.
 
 ## 🌍 Live Demo
 
-- **Frontend App URL:** [ui.api.d6d7c75.kyma.ondemand.com](ui.api.d6d7c75.kyma.ondemand.com)
-- **API Base URL:** [api.api.d6d7c75.kyma.ondemand.com/api/docs](api.api.d6d7c75.kyma.ondemand.com/api/docs)
-- **Swagger Documentation:** [api.api.d6d7c75.kyma.ondemand.com/api/docs](api.api.d6d7c75.kyma.ondemand.com/api/docs)
+- **Frontend App URL:** [ui.api.d6d7c75.kyma.ondemand.com](https://ui.api.d6d7c75.kyma.ondemand.com)  
+  _If it doesn't open properly in **Chrome**, try using **Safari**._
+- **API Base URL:** [api.api.d6d7c75.kyma.ondemand.com/](api.api.d6d7c75.kyma.ondemand.com/)
+- **Swagger Documentation:** [api.api.d6d7c75.kyma.ondemand.com/api-docs](api.api.d6d7c75.kyma.ondemand.com/api-docs)
 
 ## 🎥 Video Demo
 
-[Click here to watch the demo video](Assets/demo.mov)
+[Video demo Link](https://drive.google.com/file/d/1DfOmEUQ_0XXcWRVoM7tWn2bySvfA8Tf6/view?usp=sharing)
+
+---
+##  Architecture Diagarm
+![](./Assets/architecture.png)
 
 
 ---
@@ -102,7 +107,48 @@ Each of these is exposed via clean REST APIs and efficiently cached with Redis f
 ## Deployment Digaram
 ![](./Assets/deployment.png)
 
+## 🧩 Components
+
+### 🔙 Backend API
+
+- **Image**: `vipul710/airport-backend:dev`
+- **Port**: `8080`
+- **Dependencies**:
+  - MongoDB Atlas
+  - Redis
+
+### 🖥️ Frontend UI
+
+- **Image**: `vipul710/airports-ui:dev`
+- **Port**: `3000`
+- **Communicates with**: Backend API
+
+### 🧠 Redis Cache
+
+- **Image**: `redis:latest`
+- **Port**: `6379`
+- **Used for**: Caching frequently accessed data
+
+## 📦 Deployment Instructions
+
+1. Make sure you have access to a running Kubernetes cluster.
+2. Apply the Kubernetes manifests:
+
+kubectl apply -f k8s/deployment.yaml
+
+
+## ⚙️ Configuration
+
+The application uses the following environment variables:
+
+| Variable      | Description                           |
+|---------------|---------------------------------------|
+| `MONGO_URI`   | Connection string for MongoDB Atlas   |
+| `REDIS_HOST`  | Hostname for Redis service            |
+| `REDIS_PORT`  | Port for Redis service (default: 6379)|
+
 ---
+
 ## 📸 Screenshots
 
 ### 🏠 Home Page
