@@ -1,0 +1,325 @@
+/* .search-box-container {
+    position: relative;
+    width: 40%;
+    display: flex;
+  }
+  
+  .search-input-wrapper {
+    position: relative;
+  }
+  
+  .search-input-wrapper label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  
+  .search-input-wrapper input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+  }
+  
+  .search-input-wrapper input:focus {
+    border-color: #4c65cc;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(76, 101, 204, 0.2);
+  }
+  
+  .search-spinner {
+    position: absolute;
+    right: 12px;
+    top: 36px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(76, 101, 204, 0.2);
+    border-top-color: #4c65cc;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .suggestions-list {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .suggestions-list li {
+    padding: 10px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .suggestions-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .suggestions-list li:hover,
+  .suggestions-list li.selected {
+    background-color: #f5f7ff;
+  }
+  
+  .suggestion-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .airport-name {
+    font-weight: 500;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .airport-details {
+    display: flex;
+    margin-top: 4px;
+    justify-content: space-between;
+  }
+  
+  .airport-city {
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .airport-code {
+    font-size: 12px;
+    color: #4c65cc;
+    background-color: #f0f4ff;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+  
+  .search-button {
+    margin-top: 12px;
+    padding: 10px 20px;
+    background-color: #4c65cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+  }
+  
+  .search-button:hover {
+    background-color: #3a50a5;
+  } */
+
+  /* Fix for the overall search filter container */
+.search-filter-container {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+/* Make the inner container a single row */
+.search-filter-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* Adjust the search box container */
+.search-box-container {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Fix the position of the search input wrapper */
+.search-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Remove the margin-bottom from labels to align everything */
+
+.label-input-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.label-input-group label {
+  /* margin-bottom: 0; */
+  white-space: nowrap;
+  font-size: 15px;
+    margin-top: 5px
+
+}
+
+.label-input-group select {
+  flex: 1;
+}
+.search-input-wrapper label,
+.sort-box label,
+.order-box label {
+  /* display: none; */
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #4a5568;
+  font-size: 14px;
+}
+
+
+/* Fix the suggestions to appear below the input */
+.suggestions-list {
+  position: absolute;
+  top: 100%; /* Position below the input */
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+/* Fix the sort and order boxes */
+.sort-box, .order-box {
+  flex: 1;
+  max-width: 200px;
+}
+
+.sort-box select, .order-box select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 39px;
+}
+
+
+.add-button-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Adjust search button to align with other elements */
+.search-button {
+  margin-top: 0;
+  height: 37px;
+  padding: 0 20px;
+  background-color:  #4f5db9;;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+/* Adjust input fields for consistent heights */
+.search-input-wrapper input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 37px;
+  transition: border-color 0.2s;
+}
+
+/* Ensure consistent button heights */
+.add-button {
+  height: 42px;
+  background-color:  #4f5db9;;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  white-space: nowrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .search-filter-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-box-container,
+  .sort-box,
+  .order-box {
+    max-width: 100%;
+  }
+}
+
+.suggestions-list li {
+  padding: 10px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.suggestions-list li:last-child {
+  border-bottom: none;
+}
+
+.suggestions-list li:hover,
+.suggestions-list li.selected {
+  background-color: #f5f7ff;
+}
+
+.suggestion-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.airport-name {
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
+}
+
+.airport-details {
+  display: flex;
+  margin-top: 4px;
+  justify-content: center;
+}
+
+.airport-city {
+  font-size: 12px;
+  color: #666;
+}
+
+.airport-code {
+  font-size: 12px;
+  color: #4c65cc;
+  background-color: #f0f4ff;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-weight: 500;
+}
