@@ -92,3 +92,24 @@ This application includes various analytical endpoints and background tasks that
    - Helps understand global distribution and timezone density.
 
 Each of these is exposed via clean REST APIs and efficiently cached with Redis for production-grade speed.
+
+
+## 📸 Screenshots
+
+### 🏠 Home Page
+![Home Page](./Assets/1.png)
+
+### 🔍 Autocomplete Search 
+![Search](./Assets/2.png)
+
+### 🔍 Sort By filter 
+![Search](./Assets/3.png)
+
+### 🔍 Analytics - Average Elevation per Country
+![Search](./Assets/4.png)
+
+### 🔍 Analytics - Airports Without IATA Codes
+![Search](./Assets/5.png)
+
+### 🔍 Analytics - 10 Most Common Time Zones
+![Search](./Assets/6.png)
