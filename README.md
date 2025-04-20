@@ -8,6 +8,11 @@ A full-stack application that provides an interactive API and web interface to e
 - **API Base URL:** [api.api.d6d7c75.kyma.ondemand.com/api/docs](api.api.d6d7c75.kyma.ondemand.com/api/docs)
 - **Swagger Documentation:** [api.api.d6d7c75.kyma.ondemand.com/api/docs](api.api.d6d7c75.kyma.ondemand.com/api/docs)
 
+## 🎥 Video Demo
+
+[Click here to watch the demo video](Assets/demo.mov)
+
+
 ---
 
 ## 🧱 Tech Stack
@@ -93,7 +98,11 @@ This application includes various analytical endpoints and background tasks that
 
 Each of these is exposed via clean REST APIs and efficiently cached with Redis for production-grade speed.
 
+---
+## Deployment Digaram
+![](./Assets/deployment.png)
 
+---
 ## 📸 Screenshots
 
 ### 🏠 Home Page
